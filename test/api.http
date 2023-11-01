@@ -1,0 +1,6 @@
+
+### GET Stations from private API
+GET http://localhost:8082/api/station
+
+### GET Stations from public API
+GET http://localhost:8081/api/station 

@@ -20,7 +20,7 @@ We make two API :
 
 Because purpose and lifecycle of these API are not the same
 
-Consumer whant simple API, with very long lifecycle.
+Consumer want simple API, with very long lifecycle.
 
 So you need no hide the complexity of your internal business, infrastructure, data structure and so.
 
@@ -38,7 +38,7 @@ Public API :
  
 Private API :
  - Can have short lifecycle, and frequent update
- - Should have a single responsability / Domain
+ - Should have a single responsibility / Domain
  - Handle business logic
 
 ## Why SOLID ? Unit Test ? TDD ?
@@ -47,14 +47,14 @@ Because we want at least have unit test on our business requirement, SOLID https
 
 Dependency Injection (DI) to be able to mock our data.
 
-Single Responsability to have short and simple test to write.
+Single Responsibility to have short and simple test to write.
 
 You should know and be able to do Test Driven Development (TDD).
 
 But you should always adapt to the context : 
  - Will an error cost you a lot of time / money ?
  - Is your API critical or can be down few hours or days ?
- - What will happend if an error is only discovered after weeks (for exemple by the invoicing team) ?
+ - What will happed if an error is only discovered after weeks (for exemple by the invoicing team) ?
  - Will you be able to recover corrupted or wrong data ?
  - Is there an easy way to rollback ?
  - ...
