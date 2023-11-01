@@ -1,0 +1,6 @@
+@PublicStationAPI_HostAddress = http://localhost:5094
+
+GET {{PublicStationAPI_HostAddress}}/api/station
+Accept: application/json
+
+###

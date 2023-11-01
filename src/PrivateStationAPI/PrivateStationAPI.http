@@ -1,0 +1,6 @@
+@PrivateStationAPI_HostAddress = http://localhost:5092
+
+GET {{PrivateStationAPI_HostAddress}}/api/station
+Accept: application/json
+
+###
