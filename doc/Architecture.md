@@ -10,6 +10,7 @@
 graph TD
 Client-->PublicStationAPI
 PublicStationAPI-->PrivateStationAPI
+PrivateStationAPI-->PostgreSQL
 ```
 
 
