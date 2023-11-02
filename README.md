@@ -12,3 +12,23 @@ In this project we use french open data for electric vehicle charging station av
 
 https://www.data.gouv.fr/fr/datasets/fichier-consolide-des-bornes-de-recharge-pour-vehicules-electriques
 
+## Build the project
+
+Install requirement :
+ - Docker
+
+then execute :
+
+```bash
+docker-compose up
+```
+
+To execute in the background :
+```bash
+docker-compose up -d
+```
+
+To rebuild from sources :
+```bash
+docker-compose build  
+```
