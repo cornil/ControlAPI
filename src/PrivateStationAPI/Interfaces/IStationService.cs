@@ -1,7 +1,9 @@
-﻿namespace PrivateStationAPI.Interfaces
+﻿
+
+namespace PrivateStationAPI.Interfaces
 {
     public interface IStationService
     {
-        List<Station> GetAll();
+        Task<IEnumerable<StationDTO>> GetAll();
     }
 }

@@ -17,19 +17,24 @@ namespace PublicStationAPI.Services
 
             if(string.IsNullOrEmpty(privateStationApiUrl))
             {
-                privateStationApiUrl = "http://localhost:8082";
+                privateStationApiUrl = "http://localhost:5092";
             }
 
             Console.WriteLine($"PrivateStationApiUrl: {privateStationApiUrl}"); 
             _httpClient.BaseAddress = new Uri(privateStationApiUrl);
         }
 
-        public async Task<List<Station>> GetStationAsync()
+        public async Task<List<StationDTO>> GetStationAsync()
         {
             var response = await _httpClient.GetAsync("api/station");
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
-            var list = JsonSerializer.Deserialize<List<Station>>(content);
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            };
+            var list = JsonSerializer.Deserialize<List<StationDTO>>(content, options);
             return list;
         }
     }

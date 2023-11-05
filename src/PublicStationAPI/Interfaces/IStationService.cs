@@ -2,6 +2,6 @@
 {
     public interface IStationService
     {
-        Task<List<Station>> GetStationAsync();
+        Task<List<StationDTO>> GetStationAsync();
     }
 }

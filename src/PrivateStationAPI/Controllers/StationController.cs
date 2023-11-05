@@ -13,9 +13,10 @@ namespace PrivateStationAPI.Controllers
             _stationService = stationService;
         }
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_stationService.GetAll());
+            var result = await _stationService.GetAll();
+            return Ok(result);
         }
     }
 }

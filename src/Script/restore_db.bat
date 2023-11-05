@@ -1,0 +1,1 @@
+docker exec -i tuto_controlapi-postgres_db-1 psql -U postgres postgres < ./data/db_backup.sql

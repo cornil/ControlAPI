@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using PrivateStationAPI;
 using PrivateStationAPI.Repositories;
 using PrivateStationAPI.Services;
 
@@ -12,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IStationRepository, StationRepository>();
 builder.Services.AddScoped<IStationService, StationService>();
+
+builder.Services.AddDbContext<StationContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

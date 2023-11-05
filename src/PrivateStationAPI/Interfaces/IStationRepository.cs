@@ -2,6 +2,6 @@
 {
     public interface IStationRepository
     {
-        List<Station> GetAll();
+        Task<IEnumerable<StationDAO>> GetAllStationsAsync(int pageNumber = 1, int pageSize = 20);
     }
 }

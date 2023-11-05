@@ -14,19 +14,47 @@ namespace PrivateStationAPITest
 
         public StationServiceTest()
         {
-            _stationRepositoryMock.GetAll().Returns(new List<Station> { new Station { Id = 1, Name = "Station 1" } });
+            _stationRepositoryMock.GetAllStationsAsync().Returns(new List<StationDAO> { new StationDAO { id = 1, nom_station = "Station 1" } });
             SUT = new StationService(_stationRepositoryMock);
         }
 
         [Fact(DisplayName = "GetAll Should Return Stations")]
-        public void GetAll_ShouldReturnStations()
+        public async void GetAll_ShouldReturnStations()
         {
             // Arrange
             // Act
-            var result = SUT.GetAll();
+            var result = await SUT.GetAll();
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(1, result.Count);
+            Assert.Equal(1, result.Count());
+        }
+
+        // test MapStationDAOToDTO
+        // StationDAO.gratuit can have values 'TRUE', 'false', 'FALSE', 'true', nan, 'False', '1', '0', 'True'
+        [Theory(DisplayName = "MapStationDAOToDTO Should Return StationDTO")]
+        [InlineData("TRUE", true)]
+        [InlineData("True", true)]
+        [InlineData("true", true)]
+        [InlineData("1", true)]
+        [InlineData("FALSE", false)]
+        [InlineData("False", false)]
+        [InlineData("false", false)]
+        [InlineData("0", false)]
+        [InlineData("nan", false)]
+        public void MapStationDAOToDTO_ShouldReturnStationDTO(string gratuit, bool expected)
+        {
+            // Arrange
+            var stationDAO = new StationDAO
+            {
+                id = 1,
+                nom_station = "Station 1",
+                gratuit = gratuit
+            };
+            // Act
+            var result = SUT.MapStationDAOToDTO(stationDAO);
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(expected, result.Free);
         }
 
     }
